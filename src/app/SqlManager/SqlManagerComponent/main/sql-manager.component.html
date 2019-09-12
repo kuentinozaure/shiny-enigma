@@ -1,0 +1,244 @@
+<div class="row">
+
+    <!-- Table name link -->
+    <div class="col-md-3 col-xs-2">
+        <div class="panel panel-{{this.themeConfigurator.backgroundcolor[defaultThemeColor]}}">
+            <div class="panel-heading" id="table-panel-heading">{{this.translationObject.tablepanelheading[defaultLanguage]}}<span style="float: right; cursor: pointer;"></span></div>
+            <div class="panel-body">
+                <div *ngIf="(tablesName.length === 0); then TableNotFound else TableFound"></div>
+            </div>
+        </div>
+
+        <!-- Sequence link -->
+        <div class="panel panel-{{this.themeConfigurator.backgroundcolor[defaultThemeColor]}}">
+            <div class="panel-heading" id="sequence-panel-heading">{{this.translationObject.sequencepanelheading[defaultLanguage]}}<span style="float: right; cursor: pointer;"></span></div>
+            <div class="panel-body">
+                <div *ngIf="(sequenceList.length === 0); then SequencesNotFound else SequenceFound"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab panel -->
+    <div class="col-md-9 col-xs-10">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills">
+                    <li [ngClass]="{'active': tab === 1}">
+                        <a (click)="tab=1" id="tab-sql">{{this.translationObject.tabsql[defaultLanguage]}}</a>
+                    </li>
+                    <li [ngClass]="{'active': tab === 2}">
+                        <a (click)="tab=2; emptyTableName=true" id="tab-info-table">
+                          {{this.translationObject.tabinfotable[defaultLanguage]}}
+                        </a>
+                    </li>
+                    <li [ngClass]="{'active': tab === 3}">
+                        <a (click)="tab=3; emptySequencesname=true" id="tab-info-sequence">{{this.translationObject.tabinfosequence[defaultLanguage]}}</a>
+                    </li>
+                    <li [ngClass]="{'active': tab === 4}">
+                        <a (click)="tab=4; emptyLog=true" id="tab-info-parameters">
+                            <span class="glyphicon glyphicon-wrench"></span> {{this.translationObject.logtab[defaultLanguage]}}
+                        </a>
+                    </li>
+                    <li [ngClass]="{'active': tab === 5}">
+                        <a (click)="tab=5; emptySequencesname=true" id="tab-info-parameters">
+                            <span class="glyphicon glyphicon-cog"></span> {{this.translationObject.tabinfoparameters[defaultLanguage]}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sql -->
+        <div class="panel panel-{{this.themeConfigurator.backgroundcolor[defaultThemeColor]}}">
+            <div class="panel-body" *ngIf="tab===1">
+                <textarea class="form-control" rows="5" ng-model="query" placeholder="{{'SELECT * \nFROM TABLE\nWHERE 1=1'}}" [(ngModel)]="query">{{query}}</textarea>
+                <br/>
+                <button (click)="executeClientQuery(query)" class="btn btn-primary" id="btn-execute-query">{{this.translationObject.btnexecutequery[defaultLanguage]}}</button>
+                <br/>
+                <div *ngIf="queryIsNothing === false; then textareaNotEmpty else textareaEmpty"></div>
+
+            </div>
+
+            <!-- Informations about a datable -->
+            <div class="panel-body" *ngIf="tab===2">
+                <div *ngIf="(tableName === ''); then DataInformationsIsEmpty else DataInformationsIsNotEmpty"></div>
+            </div>
+
+            <!-- Sequence info -->
+            <div class="panel-body" *ngIf="tab===3">
+                <div *ngIf="(sequenceName === ''); then SequenceNotSelected else SequenceSelected"></div>
+            </div>
+
+            <div class="panel-body" *ngIf="tab===4">
+                <div *ngIf="(logs.length === 0); then LogsNotDisplay else LogsDisplay"></div>
+            </div>
+
+            <!-- Parameters -->
+            <div class="panel-body" *ngIf="tab===5">
+
+                <!-- Language -->
+                <div class="panel panel-{{this.themeConfigurator.backgroundcolor[defaultThemeColor]}}" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{this.translationObject.languages[defaultLanguage]}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="radio">
+                            <label><input type="radio" [checked]="defaultLanguage === 0" (change)="defaultLanguage = 0">{{this.translationObject.englishtranslation[defaultLanguage]}}</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" [checked]="defaultLanguage === 1" (change)="defaultLanguage = 1">{{this.translationObject.francetranslation[defaultLanguage]}}</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" [checked]="defaultLanguage === 2" (change)="defaultLanguage = 2">{{this.translationObject.spanishtranslation[defaultLanguage]}}</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" [checked]="defaultLanguage === 3" (change)="defaultLanguage = 3">{{this.translationObject.netherlandtranslation[defaultLanguage]}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme color -->
+                <div class="panel panel-{{this.themeConfigurator.backgroundcolor[defaultThemeColor]}}" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{this.translationObject.color[defaultLanguage]}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div *ngFor="let color of themeConfigurator.backgroundcolor" class="radio">
+                            <label><input type="radio" [checked]="defaultThemeColor === this.themeConfigurator.backgroundcolor.indexOf(color)" (change)="defaultThemeColor = this.themeConfigurator.backgroundcolor.indexOf(color)">{{color}}</label>
+                            <div class="panel panel-{{color}}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Region Template -->
+
+    <ng-template #LogsDisplay>
+        <table class="table table-striped" style="font-size: 12px !important">
+            <thead class="thead-light">
+                <th id="th-structure-data-name">{{this.translationObject.typeoflog[defaultLanguage]}}</th>
+                <th id="th-structure-data-name">{{this.translationObject.log[defaultLanguage]}}</th>
+                <th id="th-structure-data-name">{{this.translationObject.logdate[defaultLanguage]}}</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of logs">
+                    <td class="bg-{{log.typeLog}}">{{log.typeLog}}</td>
+                    <td>{{log.description}}</td>
+                    <td>{{log.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+
+    <ng-template #LogsNotDisplay>
+        <br/>
+        <div class="alert alert-danger" role="alert" [(ngModel)]="emptyLog" [hidden]="!emptyLog" ngDefaultControl id="alert-data-info-empty">
+            {{this.translationObject.logmsgalert[defaultLanguage]}}
+            <button type="button" class="close" aria-label="Close" (click)="emptyLog = false">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </ng-template>
+
+
+    <ng-template #DataInformationsIsNotEmpty>
+        <h1>{{this.translationObject.resultdatastructureof[defaultLanguage]}} {{tableName | lowercase}} table</h1>
+        <table class="table table-striped" style="font-size: 12px !important" ng-show="result">
+            <thead class="thead-light">
+                <th id="th-structure-data-name">{{this.translationObject.thstructuredataname[defaultLanguage]}}</th>
+                <th id="th-structure-data-type">{{this.translationObject.thstructuredatatype[defaultLanguage]}}</th>
+                <th id="th-structure-data-size">{{this.translationObject.thstructuredatasize[defaultLanguage]}}</th>
+                <th id="th-structure-data-order">{{this.translationObject.thstructuredataorder[defaultLanguage]}}</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let col of columnName">
+                    <td>{{col.name}}</td>
+                    <td>{{col.type}}</td>
+                    <td>{{col.size}}</td>
+                    <td>{{col.order}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <app-tabledata [datas]="datasOfColumn" [column]="columnName" [tableName]="tableName" [translationObject]="translationObject" [defaultLanguage]="defaultLanguage"></app-tabledata>
+    </ng-template>
+
+    <ng-template #DataInformationsIsEmpty>
+        <br/>
+        <div class="alert alert-danger" role="alert" [(ngModel)]="emptyTableName" [hidden]="!emptyTableName" ngDefaultControl id="alert-data-info-empty">
+            {{this.translationObject.alertdatainfoempty[defaultLanguage]}}
+            <button type="button" class="close" aria-label="Close" (click)="emptyTableName = false">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </ng-template>
+
+
+    <ng-template #SequenceNotSelected>
+        <br/>
+        <div class="alert alert-danger" role="alert" [(ngModel)]="emptySequencesname" [hidden]="!emptySequencesname" ngDefaultControl id="alert-sequence-empty">
+            {{this.translationObject.alertsequenceempty[defaultLanguage]}}
+            <button type="button" class="close" aria-label="Close" (click)="emptySequencesname = false">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </ng-template>
+
+    <ng-template #SequenceSelected>
+        <h1 id="result-for-sequence">{{this.translationObject.resultforsequence[defaultLanguage]}} {{sequenceName | lowercase}}</h1>
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <th id="th-sequence-info-name">{{this.translationObject.thsequenceinfoname[defaultLanguage]}}</th>
+                <th id="th-sequence-info-min-value">{{this.translationObject.thsequenceinfominvalue[defaultLanguage]}}</th>
+                <th id="th-sequence-info-max-value">{{this.translationObject.thsequenceinfomaxvalue[defaultLanguage]}}</th>
+                <th id="th-sequence-info-increment">{{this.translationObject.thsequenceinfoincrement[defaultLanguage]}}</th>
+                <th id="th-sequence-info-cycle-flag">{{this.translationObject.thsequencecycleflag[defaultLanguage]}}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor="let data of sequenceInfo">{{data}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+
+
+    <!-- Template to display when user don't type anything in sql area -->
+    <ng-template #TableNotFound>
+        <a id="table-panel-heading-link-not-found">{{this.translationObject.tablepanelheadingtablelinknotfound[defaultLanguage]}}</a>
+    </ng-template>
+
+    <ng-template #TableFound>
+        <div *ngFor="let name of tablesName" style="font-size: 10px !important">
+            <a (click)="setDefaultQueryWithTableNameAndDetails(name)">{{name | uppercase}}</a>
+            <br/>
+        </div>
+    </ng-template>
+
+    <ng-template #SequencesNotFound>
+        <a id="sequence-panel-link-not-found">{{this.translationObject.tablepanelsequencelinknotfound[defaultLanguage]}}</a>
+    </ng-template>
+
+
+    <ng-template #SequenceFound>
+        <div *ngFor="let sequence of sequenceList" style="font-size: 10px !important">
+            <a (click)="getSequenceInfos(sequence)">{{sequence | uppercase}}</a>
+        </div>
+    </ng-template>
+
+    <ng-template #textareaEmpty>
+        <br/>
+        <div class="alert alert-danger" role="alert" [(ngModel)]="textAreaError" [hidden]="!textAreaError" ngDefaultControl id="alert-sql-empty">
+            {{this.translationObject.sqlfillerror[defaultLanguage]}}
+            <button type="button" class="close" aria-label="Close" (click)="textAreaError = false">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </ng-template>
+
+    <!-- Template to display when user have type some text in sql area -->
+    <ng-template #textareaNotEmpty>
+        <app-table-data-query [sqlResult]="sqlResult" [colSpan]="numberOfcolumn" [tableName]="tableName" [dataLength]="dataLength" [translationObject]="translationObject" [defaultLanguage]="defaultLanguage" *ngIf="sqlResult != null"></app-table-data-query>
+    </ng-template>
+    <!-- EndRegion Template -->

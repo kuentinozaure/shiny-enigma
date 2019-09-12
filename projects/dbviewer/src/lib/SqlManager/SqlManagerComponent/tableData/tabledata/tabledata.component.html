@@ -1,0 +1,52 @@
+<!-- Display or not the table with information -->
+<div *ngIf="(datas.length !== 0 && column.length !==0); then displayData else displayNoData">
+</div>
+
+
+<!-- Region Template -->
+
+<!-- Template to display data -->
+<ng-template #displayData>
+    <h1 class="page-header" id="resultfound">{{datas.length}} {{this.translationObject.resultfound[defaultLanguage]}}</h1>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th *ngFor="let col of column" class="text-center">{{col.name}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of datas">
+                <td *ngFor="let valueLine of data">
+
+                    <!-- if value is number -->
+                    <ng-container *ngIf="isNumber(valueLine)">
+                        <input type="number" value={{valueLine}} disabled>
+                    </ng-container>
+
+                    <!-- If value is boolean -->
+                    <ng-container *ngIf="isBoolean(valueLine)">
+                        <input type="checkbox" [checked]="valueLine" disabled>
+                    </ng-container>
+
+                    <!-- If the value is string -->
+                    <ng-container *ngIf="isString(valueLine) ">
+                        {{valueLine}}
+                    </ng-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<!-- Template to display no data  -->
+<ng-template #displayNoData>
+    <br/>
+    <div class="alert alert-warning " [(ngModel)]="noDataAlertIsClose " [hidden]="!noDataAlertIsClose " ngDefaultControl id="nodatafound">
+        {{this.translationObject.nodatafound[defaultLanguage]}}
+        <button type="button " class="close " aria-label="Close " (click)="noDataAlertIsClose=false ">
+            <span aria-hidden="true ">&times;</span>
+        </button>
+    </div>
+</ng-template>
+
+<!-- EndRegion Template -->

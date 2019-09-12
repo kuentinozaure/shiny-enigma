@@ -1,0 +1,268 @@
+{
+    "tablepanelheading": [
+        "Tables",
+        "Tables",
+        "Tablas",
+        "Tabel"
+    ],
+    "sequencepanelheading": [
+        "Sequences",
+        "Séquences",
+        "Secuencias",
+        "Volgordes"
+    ],
+    "tabsql": [
+        "Sql",
+        "Sql",
+        "Sql",
+        "Sql"
+    ],
+    "tabinfotable": [
+        "Informations about a table",
+        "Informations a propos d'une table",
+        "Información sobre una tabla",
+        "Informatie over een tabel"
+    ],
+    "tabinfosequence": [
+        "Sequence info",
+        "Informations d'une séquence",
+        "Información de una secuencia",
+        "Informatie van een sequentie"
+    ],
+    "btnexecutequery": [
+        "Execute query",
+        "Executez la requete",
+        "Ejecutar la solicitud",
+        "Het verzoek uitvoeren"
+    ],
+    "thstructuredataname": [
+        "Name",
+        "Nom",
+        "Nombre",
+        "Benoemen"
+    ],
+    "thstructuredatatype": [
+        "Type",
+        "Type",
+        "Tipo",
+        "Type"
+    ],
+    "thstructuredatasize": [
+        "Size",
+        "Taille",
+        "tamaño",
+        "Grootte"
+
+    ],
+    "thstructuredataorder": [
+        "Order",
+        "Ordre",
+        "Orden",
+        "Bestelling"
+    ],
+    "alertdatainfoempty": [
+        "Please select a table name",
+        "Selectionnez un nom de table",
+        "Seleccionar un nombre de tabla",
+        "Selecteer een tabelnaam"
+    ],
+    "alertsequenceempty": [
+        "Please select a sequence name",
+        "Selectionnez un nom de séquence",
+        "Seleccione un nombre de secuencia",
+        "Selecteer een sequentienaam"
+    ],
+    "thsequenceinfoname": [
+        "Name",
+        "Nom",
+        "Nombre",
+        "Benoemen"
+    ],
+    "thsequenceinfominvalue": [
+        "Min value",
+        "Valeur min",
+        "Valor mín",
+        "Min waarde"
+    ],
+    "thsequenceinfomaxvalue": [
+        "Max value",
+        "Valeur max",
+        "Valor máx",
+        "Max waarde"
+    ],
+    "thsequenceinfoincrement": [
+        "Increment by",
+        "Incrementez par",
+        "Incinerar por",
+        "Verbranden door"
+    ],
+    "thsequencecycleflag": [
+        "Cycle flag",
+        "Cycle drapeau",
+        "Ciclo del indicador",
+        "Vlagcyclus"
+    ],
+    "tablepanelheadingtablelinknotfound": [
+        "No table found",
+        "Aucune table trouvé",
+        "No se ha encontrado ninguna tabla",
+        "Geen tabel gevonden"
+    ],
+    "tablepanelsequencelinknotfound": [
+        "No sequence found",
+        "Aucune sequence trouvé",
+        "No se ha encontrado ninguna secuencia",
+        "Geen volgorde gevonden"
+    ],
+    "alertsqlempty": [
+        "Please fill the sql field",
+        "Remplissez le champ sql ",
+        "Rellene el campo sql  ",
+        "Vul het sql-veld in"
+    ],
+    "resultforsequence": [
+        "Result for ",
+        "Résultat pour ",
+        "Resultado para ",
+        "Resultaat voor "
+    ],
+    "resultdatastructureof": [
+        "Data structure for ",
+        "Structure de donnée pour ",
+        "Estructura de datos para ",
+        "Gegevensstructuur voor "
+    ],
+    "resultfound": [
+        " result found ",
+        " résultat trouvés",
+        " resultado obtenido",
+        " gevonden resultaat"
+    ],
+    "nodatafound": [
+        " no data found ",
+        " Aucun résultat trouvés",
+        " No se han encontrado resultados",
+        " Geen resultaten gevonden"
+    ],
+    "tabinfoparameters": [
+        "Settings",
+        "Parametres",
+        "Parámetros",
+        "Parameters"
+    ],
+    "languages": [
+        "Languages",
+        "Langues",
+        "Idiomas",
+        "Talen"
+    ],
+    "sqlfillerror": [
+        "Please fill the sql field",
+        "Remplissez la zone de saisie sql",
+        "Por favor, rellene el campo sql",
+        "Vul het sql-invoerveld in"
+    ],
+    "englishtranslation": [
+        "English",
+        "Anglais",
+        "Inglés",
+        "Engels"
+
+    ],
+    "francetranslation": [
+        "French",
+        "Francais",
+        "Francia",
+        "Fransman"
+    ],
+    "spanishtranslation": [
+        "Spanish",
+        "Espagnol",
+        "Español",
+        "Spaanse taal"
+    ],
+    "netherlandtranslation": [
+        "Dutchman",
+        "Néerlandais",
+        "Holandés",
+        "Nederlander "
+    ],
+    "fontcolor": [
+        "Font color",
+        "Couleur de police",
+        "Color de fuente",
+        "Lettertype kleur"
+    ],
+    "color": [
+        "Theme color",
+        "Couleur du theme",
+        "Color del tema",
+        "Thema kleur"
+    ],
+    "logtab": [
+        "log history",
+        "historique des logs",
+        "historial de registro",
+        "logboekgeschiedenis"
+    ],
+    "logmsgalert": [
+        "No logs found",
+        "Pas de logs trouvés",
+        "No se han encontrado registros",
+        "Geen logs gevonden"
+    ],
+    "log": [
+        "Logs",
+        "Logs",
+        "registro",
+        "boomstammen"
+    ],
+    "typeoflog": [
+        "logs type",
+        "type de logs",
+        "tipo de registros",
+        "boomstamtype"
+    ],
+    "logdate": [
+        "log date",
+        "date des logs",
+        "fecha de registro",
+        "registratiedatum"
+    ],
+    "errormessagesqlareaempty": [
+        "The user has not entered any information in the sql field ",
+        "L'utilisateur n'a saisi aucune information dans la zone sql ",
+        "El usuario no ha introducido ninguna información en el campo sql ",
+        "De gebruiker heeft geen informatie ingevuld in het sql-veld "
+    ],
+    "allsequencesucesslog": [
+        "All sequences have been fetched succesful",
+        "Toute les sequences ont etait recuperer avec succes",
+        "Todas las secuencias fueron recuperadas con éxito",
+        "Alle sequenties werden met succes hersteld"
+    ],
+    "alltablesucesslog": [
+        "All table have been fetched succesful",
+        "Toute les tables ont etait recuperer avec succes",
+        "Todas las tablas fueron recuperadas con éxito",
+        "Alle tabellen zijn met succes gerecupereerd"
+    ],
+    "alldatafromdtsuccess": [
+        "All data from datatable have been fetched succesful",
+        "Toute les donnees de la tables ont etait recuperer avec succes",
+        "Todos los datos de la tabla se recuperaron con éxito",
+        "Alle gegevens uit de tabel zijn met succes gerecupereerd"
+    ],
+    "allsequenceinfosuccess": [
+        "All sequence information have been fetched succesful",
+        "Toute les informations de la sequences ont etait recuperer avec succes",
+        "Toda la información de las secuencias fue recuperada con éxito",
+        "Alle informatie uit de sequenties werd met succes opgehaald"
+    ],
+    "sqlqueryexecutewithsucess": [
+        "Sql query have been execute with success",
+        "La requetes sql a etait execute avec succes",
+        "La consulta sql a se ejecutó con éxito",
+        "Het sql-verzoek werd met succes uitgevoerd"
+    ]
+}

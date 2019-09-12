@@ -1,0 +1,53 @@
+<div *ngIf="sqlResult.length !== 0; then displayData else displayNoData">
+</div>
+
+
+<!-- Region Template -->
+
+<!-- Template to display data -->
+<ng-template #displayData>
+    <hr size="30">
+
+    <h1 class="page-header"><br/>{{dataLength}} {{this.translationObject.resultfound[defaultLanguage]}}</h1>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center" [attr.colspan]="colSpan">{{tableName}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let resutLine of sqlResult">
+                <td *ngFor="let valueLine of resutLine">
+
+                    <!-- if value is number -->
+                    <ng-container *ngIf="isNumber(valueLine)">
+                        <input type="number" value={{valueLine}} disabled>
+                    </ng-container>
+
+                    <!-- If value is boolean -->
+                    <ng-container *ngIf="isBoolean(valueLine)">
+                        <input type="checkbox" [checked]="valueLine" disabled>
+                    </ng-container>
+
+                    <!-- If the value is string -->
+                    <ng-container *ngIf="isString(valueLine) ">
+                        {{valueLine}}
+                    </ng-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<!-- Template to display no data  -->
+<ng-template #displayNoData>
+    <br/>
+    <div class="alert alert-warning " [(ngModel)]="noDataAlertIsClose " [hidden]="!noDataAlertIsClose " ngDefaultControl>
+        {{this.translationObject.nodatafound[defaultLanguage]}} <b>{{tableName}}</b>
+        <button type="button " class="close " aria-label="Close " (click)="noDataAlertIsClose=false ">
+              <span aria-hidden="true ">&times;</span>
+          </button>
+    </div>
+</ng-template>
+
+<!-- EndRegion Template -->

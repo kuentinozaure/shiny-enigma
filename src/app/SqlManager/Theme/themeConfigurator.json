@@ -1,0 +1,10 @@
+{
+    "backgroundcolor": [
+        "primary",
+        "default ",
+        "success",
+        "danger",
+        "warning",
+        "info"
+    ]
+}
