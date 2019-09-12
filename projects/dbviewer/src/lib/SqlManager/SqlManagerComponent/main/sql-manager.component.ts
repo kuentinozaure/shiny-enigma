@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { SqlManagerService } from '../../SqlManagerServices/sql-manager.service';
-import * as Translation from '../../Translation/translation.json';
-import * as ThemeConfigurator from '../../Theme/ThemeConfigurator.json';
+// import * as Translation from '../../Translation/translation.json';
+// import * as ThemeConfigurator from '../../Theme/ThemeConfigurator.json';
 import { LogType, Log } from '../../class/log';
-import { ReactiveFormsModule } from '@angular/forms';
+// import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sql-manager',

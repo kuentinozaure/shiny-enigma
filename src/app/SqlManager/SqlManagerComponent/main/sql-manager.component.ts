@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { SqlManagerService } from '../../SqlManagerServices/sql-manager.service';
-import Translation from '../../Translation/translation.json';
-import ThemeConfigurator from '../../Theme/ThemeConfigurator.json';
+// import Translation from '../../Translation/translation.json';
+// import ThemeConfigurator from '../../Theme/ThemeConfigurator.json';
 import { LogType, Log } from '../../class/log';
 
 @Component({
@@ -87,8 +87,8 @@ export class SqlManagerComponent implements OnInit {
   fetchAllData() {
     this.getTablesName();
     this.getAllSequences();
-    this.translationObject =  Translation;
-    this.themeConfigurator = ThemeConfigurator;
+    this.translationObject =  require('../../Translation/translation.json');;
+    this.themeConfigurator = require('../../Theme/ThemeConfigurator.json');;
   }
 
   /**
